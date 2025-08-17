@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador do Código de Hill</title>
+    <meta name="description" content="Demonstração interativa do algoritmo de criptografia Código de Hill usando álgebra linear.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Visualizador do Código de Hill</h1>
+            <p>Entenda como funciona a criptografia com álgebra linear, passo a passo.</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Matriz chave -->
+            <section class="card">
+                <h2>Matriz Chave</h2>
+                <p class="hint">💡 A matriz deve ser invertível (determinante ≠ 0 mod 26) para funcionar corretamente.</p>
+                <div class="matrix-controls">
+                    <label for="matrix-size">Tamanho da Matriz:</label>
+                    <select id="matrix-size">
+                        <option value="2">2x2</option>
+                        <option value="3">3x3</option>
+                    </select>
+                    <button id="fill-example" class="btn btn-secondary">Preencher Exemplo</button>
+                </div>
+                
+                <div id="matrix-container" class="matrix-container"></div>
+                
+                <div id="validation-status" class="validation-status">
+                    <span id="validation-badge" class="badge">Validando...</span>
+                    <p id="validation-message"></p>
+                </div>
+                
+            </section>
+
+            <!-- Texto -->
+            <section class="card">
+                <h2>📝 Processamento de Texto</h2>
+                
+                <div class="mode-selector">
+                    <label><input type="radio" name="mode" value="encrypt" checked> 🔒 Criptografar</label>
+                    <label><input type="radio" name="mode" value="decrypt"> 🔓 Descriptografar</label>
+                </div>
+
+                <div class="text-areas">
+                    <div class="text-input-group">
+                        <label for="input-text">Texto de Entrada:</label>
+                        <textarea id="input-text" placeholder="Digite o texto aqui (A-Z apenas)"></textarea>
+                    </div>
+                    
+                    <div class="text-input-group">
+                        <label for="output-text">Resultado:</label>
+                        <textarea id="output-text" readonly placeholder="O resultado aparecerá aqui"></textarea>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="process-btn" class="btn btn-primary">Processar</button>
+                    <button id="swap-btn" class="btn btn-secondary">↔️ Trocar</button>
+                    <button id="clear-btn" class="btn btn-outline">Limpar</button>
+                </div>
+            </section>
+
+            <!-- Passos -->
+            <section id="steps-section" class="card" style="display: none;">
+                <h2>🔍 Visualização dos Passos</h2>
+                <div id="steps-container"></div>
+            </section>
+        </main>
+    </div>
+
+    <script src="./assets/js/hill-cipher.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

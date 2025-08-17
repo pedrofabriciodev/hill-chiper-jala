@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Funciona</title>
+  <link rel="stylesheet" href="./assets/css/index.css">
+
+</head>
+<body>
+  <section class="card">
+    <h1>Como Funciona</h1>
+    <div class="explanation">
+      <div class="explanation-item">
+        <h2>🔒 Criptografia</h2>
+        <p class="typewriter" data-text="1. Converte texto em números (A=0, B=1, ..., Z=25)"></p>
+        <p class="typewriter" data-text="2. Agrupa em vetores do tamanho da matriz"></p>
+        <p class="typewriter" data-text="3. Multiplica cada vetor pela matriz chave (mod 26)"></p>
+        <p class="typewriter" data-text="4. Converte números de volta para letras"></p>
+      </div>
+      <div class="explanation-item">
+        <h2>🔓 Descriptografia</h2>
+        <p class="typewriter" data-text="1. Calcula a matriz inversa da chave (mod 26)"></p>
+        <p class="typewriter" data-text="2. Aplica o mesmo processo com a matriz inversa"></p>
+        <p class="typewriter" data-text="3. Recupera o texto original"></p>
+      </div>
+    </div>
+    <button class="next-btn" onclick="window.location.href='index.html'">Comece a Criptografar</button>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = Array.from(document.querySelectorAll(".typewriter"));
+      
+      function typeLine(index) {
+        if (index >= elements.length) return; 
+
+        const el = elements[index];
+        const text = el.getAttribute("data-text");
+        let charIndex = 0;
+
+        function typeChar() {
+          if (charIndex < text.length) {
+            el.textContent += text.charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 20);
+          } else {
+            typeLine(index + 1);
+          }
+        }
+
+        typeChar();
+      }
+
+      typeLine(0); 
+    });
+  </script>
+</body>
+</html>
